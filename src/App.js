@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Mainscreen from './components/Mainscreen';
+import Rightbar from './components/Rightbar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="flex flex-col h-screen">
+        <div className="bg-blue-400 h-16">
+
+        </div>
+        <div className="flex flex-row h-full w-full">   
+          <div className ="basis-3/4 bg-red-600 text-white overflow-y-auto"></div>
+          <div className= "basis-1/4 bg-black text-white overflow-y-auto"><Rightbar/></div>
+        </div>
+      </div>
+
     </div>
+
   );
 }
 
 export default App;
+
