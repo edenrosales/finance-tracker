@@ -2,11 +2,11 @@ import React from "react";
 
 const Transaction = ({name,cost,date,note}) =>{
     return(
-        <div>
-            <div className="">{name}</div>
-            <div className="">{cost}</div>
-            <div className="">{date}</div>
-            <div className="bottom-2">{note}</div>
+        <div className="shadow-lg border px-4">
+            <div className=" font-medium text-2xl font-light">{name}</div>
+            <div className=" translate-x-4">{date} {cost}</div>
+            {/* <div className="translate-x-4">{date}</div> */}
+            <div className="translate-x-4">{note}</div>
         </div>
     );
 };

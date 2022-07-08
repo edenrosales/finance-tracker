@@ -3,9 +3,9 @@ import Transaction from './Transaction'
 
 const Transactions = ({transactions}) => {
     return(
-        <div>
+        <div className="flex flex-col space-y-4 py-4 px-2">
             {transactions.map((transactions)=>(
-                <Transaction name={transactions.name} cost={transactions.cost} date={transactions.date} note={transactions.note}/>
+                <Transaction className=""name={transactions.name} cost={transactions.cost} date={transactions.date} note={transactions.note}/>
             ))}
         </div>
     );

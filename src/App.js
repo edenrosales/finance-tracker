@@ -4,6 +4,7 @@ import Mainscreen from './components/Mainscreen';
 import Rightbar from './components/Rightbar';
 import { useState } from 'react';
 import Transactions from './components/Transactions'
+import {Scrollbars} from 'react-custom-scrollbars-2'
 
 function App() {
   const [transactions, setTransactions] = useState([
@@ -101,7 +102,9 @@ function App() {
         </div>
         <div className="flex flex-row h-full w-full">   
           <div className ="basis-3/4 bg-red-600 text-white overflow-y-auto">
-            <Transactions transactions={transactions}/>
+            <Scrollbars >
+              <Transactions transactions={transactions}/>
+            </Scrollbars>
           </div>
           <div className= "basis-1/4 bg-black text-white overflow-y-auto"><Rightbar/></div>
         </div>
