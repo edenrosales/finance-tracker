@@ -94,6 +94,7 @@ function App() {
       }
   
   ])
+  const onDeleteTransaction = (id) => setTransactions(transactions.filter( (transaction) => (id !== transaction.id)))
   return (
     <div>
       <div className="flex flex-col h-screen">
@@ -103,7 +104,7 @@ function App() {
         <div className="flex flex-row h-full w-full">   
           <div className ="basis-3/4 bg-red-600 text-white overflow-y-auto">
             <Scrollbars >
-              <Transactions transactions={transactions}/>
+              <Transactions className="" transactions={transactions} onDelete={onDeleteTransaction}/>
             </Scrollbars>
           </div>
           <div className= "basis-1/4 bg-black text-white overflow-y-auto"><Rightbar/></div>
