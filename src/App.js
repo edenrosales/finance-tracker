@@ -14,6 +14,7 @@ function App() {
           cost:50,
           date:"July 5th",
           note:"Food for the week",
+          reminder: false,
       },
       {
           id:2,
@@ -21,6 +22,7 @@ function App() {
           cost:2,
           date:"July 6th",
           note:"Just something at the gas station",
+          reminder: false,
       },
       {
           id:3,
@@ -28,6 +30,8 @@ function App() {
           cost:20,
           date:"July 6th",
           note:"Went to watch a movie with some friends",
+          reminder: false,
+          
       },
       {
         id:5,
@@ -35,6 +39,7 @@ function App() {
         cost:20,
         date:"July 6th",
         note:"blah",
+        reminder: false,
       },
       {
         id:6,
@@ -42,6 +47,7 @@ function App() {
         cost:20,
         date:"July 6th",
         note:"blah",
+        reminder: false,
       },
       {
         id:7,
@@ -49,6 +55,7 @@ function App() {
         cost:20,
         date:"July 6th",
         note:"blah",
+        reminder: false,
       },
       {
         id:8,
@@ -56,6 +63,7 @@ function App() {
         cost:20,
         date:"July 6th",
         note:"blah",
+        reminder: false,
       },
       {
         id:9,
@@ -63,6 +71,7 @@ function App() {
         cost:20,
         date:"July 6th",
         note:"blah",
+        reminder: false,
       },
       {
         id:10,
@@ -70,6 +79,7 @@ function App() {
         cost:20,
         date:"July 6th",
         note:"blah",
+        reminder: false,
       },
       {
         id:11,
@@ -77,6 +87,7 @@ function App() {
         cost:20,
         date:"July 6th",
         note:"blah",
+        reminder: false,
       },
       {
         id:12,
@@ -84,6 +95,7 @@ function App() {
         cost:20,
         date:"July 6th",
         note:"blah",
+        reminder: false,
       },
       {
         id:13,
@@ -91,10 +103,12 @@ function App() {
         cost:20,
         date:"July 6th",
         note:"blah",
+        reminder: false,
       }
   
   ])
   const onDeleteTransaction = (id) => setTransactions(transactions.filter( (transaction) => (id !== transaction.id)))
+  const bookmarkChange = (id) => setTransactions( transactions.map((transaction)=>(transaction.id===id ? { ...transaction,reminder:!transaction.reminder } : transaction)))
   return (
     <div>
       <div className="flex flex-col h-screen">
@@ -104,7 +118,7 @@ function App() {
         <div className="flex flex-row h-full w-full">   
           <div className ="basis-3/4 bg-red-600 text-white overflow-y-auto">
             <Scrollbars >
-              <Transactions className="" transactions={transactions} onDelete={onDeleteTransaction}/>
+              <Transactions className="" transactions={transactions} onDelete={onDeleteTransaction} bookmarkChange = {bookmarkChange}/>
             </Scrollbars>
           </div>
           <div className= "basis-1/4 bg-black text-white overflow-y-auto"><Rightbar/></div>

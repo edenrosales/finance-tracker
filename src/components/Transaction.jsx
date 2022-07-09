@@ -4,10 +4,10 @@ import { useState } from 'react';
 
 
 
-const Transaction = ({name,cost,date,note,onDelete,id}) =>{
-    const [bookmarked,setBookmarked] = useState(true);
+const Transaction = ({name,cost,date,note,onDelete,id,bookmarked,bookmarkChange}) =>{
+    // const [bookmarked,setBookmarked] = useState(true);
 
-    const deleteTransaction = (bookmarked) => setBookmarked()
+    // const deleteTransaction = (bookmarked) => setBookmarked()
     return(
         <div className="border px-4 rounded-lg py-6">
             <div className="flex flex-row items-center">
@@ -19,8 +19,8 @@ const Transaction = ({name,cost,date,note,onDelete,id}) =>{
                     <div className="font-light">{date} </div>
                 </div>
                 <div className=" ml-auto text-2xl font-thin pr-20">${cost}</div>
-                {bookmarked ? <MdBookmarkBorder className=" text-3xl hover:border" onClick={() => {setBookmarked(!bookmarked)}}/> : <MdBookmark className=" text-3xl hover:border" onClick={() => {setBookmarked(!bookmarked)}}/> }
-                
+                {bookmarked ? <MdBookmark className=" text-3xl hover:border" onClick={() => {bookmarkChange(id)}}/> : <MdBookmarkBorder className=" text-3xl hover:border" onClick={() => {bookmarkChange(id)}}/> }
+                {/* <MdBookmarkBorder className=" text-3xl hover:border" onClick={() => {bookmarkChange(id); console.log(bookmarked)}}/> */}
                 <div className=" pl-6 font-thin pr-4 " onClick={()=> {onDelete(id)}}>x</div>
             {/* <div className="translate-x-4">{date}</div> */}
             {/* <div className="translate-x-4">{note}</div> */}
