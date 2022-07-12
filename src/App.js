@@ -5,7 +5,9 @@ import Rightbar from './components/Rightbar';
 import { useState } from 'react';
 import Transactions from './components/Transactions'
 import {Scrollbars} from 'react-custom-scrollbars-2'
-import {Dropdown} from './components/Dropdown'
+import Dropdown from './components/Dropdown'
+
+
 
 function App() {
   const [transactions, setTransactions] = useState([
@@ -108,19 +110,32 @@ function App() {
       }
   
   ])
+  const [transactionOrder, setTransactionOrder] = useState(1);
   const onDeleteTransaction = (id) => setTransactions(transactions.filter( (transaction) => (id !== transaction.id)))
   const bookmarkChange = (id) => setTransactions( transactions.map((transaction)=>(transaction.id===id ? { ...transaction,reminder:!transaction.reminder } : transaction)))
+  
+  function setView(transactionOrder) { 
+    if(transactionOrder === 1)
+    return(<Transactions className="" transactions={transactions} onDelete={onDeleteTransaction} bookmarkChange = {bookmarkChange}/>)
+    else 
+    return(<div>this is working</div>)
+  }
+  
   return (
     <div>
       <div className="flex flex-col h-screen">
-        <div className="bg-blue-400 h-16 flex-none">
-
-        </div>
+        <div className="bg-blue-400 h-16 flex-none"></div>
+        {/* <div className="m-auto">
+          <Dropdown/>
+        </div> */}
         <div className="flex flex-row h-full w-full">   
-          <div className ="basis-3/4 bg-red-600 text-white overflow-y-auto">
-            <Dropdown/>
-            <Scrollbars >
-              <Transactions className="" transactions={transactions} onDelete={onDeleteTransaction} bookmarkChange = {bookmarkChange}/>
+          <div className ="basis-3/4 flex flex-col bg-red-600 text-white overflow-y-auto">
+            <div className="ml-auto py-6 px-16 z-10">
+              <Dropdown setTransactionOrder={setTransactionOrder} transactionOrder={transactionOrder}/>
+            </div>
+            <Scrollbars className="z-0" >
+              {setView(transactionOrder)}
+              {/* <Transactions className="" transactions={transactions} onDelete={onDeleteTransaction} bookmarkChange = {bookmarkChange}/> */}
             </Scrollbars>
           </div>
           <div className= "basis-1/4 bg-black text-white overflow-y-auto"><Rightbar/></div>
