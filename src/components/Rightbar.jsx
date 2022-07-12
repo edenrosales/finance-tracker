@@ -11,7 +11,7 @@ const Rightbar = () => {
                     </div>
                 </div>
                 <div className= "">
-                    <div>
+                    <div className="">
                         <div className=" text-white text-left text-3xl p-8">Categories</div>
                     </div>
                     

@@ -5,6 +5,7 @@ import Rightbar from './components/Rightbar';
 import { useState } from 'react';
 import Transactions from './components/Transactions'
 import {Scrollbars} from 'react-custom-scrollbars-2'
+import {Dropdown} from './components/Dropdown'
 
 function App() {
   const [transactions, setTransactions] = useState([
@@ -117,6 +118,7 @@ function App() {
         </div>
         <div className="flex flex-row h-full w-full">   
           <div className ="basis-3/4 bg-red-600 text-white overflow-y-auto">
+            <Dropdown/>
             <Scrollbars >
               <Transactions className="" transactions={transactions} onDelete={onDeleteTransaction} bookmarkChange = {bookmarkChange}/>
             </Scrollbars>
