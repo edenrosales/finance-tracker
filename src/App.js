@@ -6,7 +6,8 @@ import { useState } from 'react';
 import Transactions from './components/Transactions'
 import {Scrollbars} from 'react-custom-scrollbars-2'
 import Dropdown from './components/Dropdown'
-
+import AddTransaction from './components/AddTransactionWindow'
+import AddTransactionWindow from './components/AddTransactionWindow';
 
 
 function App() {
@@ -113,7 +114,15 @@ function App() {
   const [transactionOrder, setTransactionOrder] = useState(1);
   const onDeleteTransaction = (id) => setTransactions(transactions.filter( (transaction) => (id !== transaction.id)))
   const bookmarkChange = (id) => setTransactions( transactions.map((transaction)=>(transaction.id===id ? { ...transaction,reminder:!transaction.reminder } : transaction)))
-  
+  const addTransaction = (name,date,price) =>{
+    const temp = {
+      id : Math.floor(Math.random() * 10000) +1, 
+      name : name,
+      date: date,
+      cost: price,
+    }
+    setTransactions([...transactions,temp])
+  }
   function setView(transactionOrder) { 
     if(transactionOrder === 1)
     return(<Transactions className="" transactions={transactions} onDelete={onDeleteTransaction} bookmarkChange = {bookmarkChange}/>)
@@ -130,8 +139,13 @@ function App() {
         </div> */}
         <div className="flex flex-row h-full w-full">   
           <div className ="basis-3/4 flex flex-col bg-red-600 text-white overflow-y-auto">
-            <div className="ml-auto py-6 px-16 z-10">
-              <Dropdown setTransactionOrder={setTransactionOrder} transactionOrder={transactionOrder}/>
+            <div className="flex flex-row">
+              <div className="mr-auto py-6 px-16 z-10">
+                <AddTransactionWindow addTransaction={addTransaction}/>
+              </div>
+              <div className="ml-auto py-6 px-16 z-10">
+                <Dropdown setTransactionOrder={setTransactionOrder} transactionOrder={transactionOrder}/>
+              </div>
             </div>
             <Scrollbars className="z-0" >
               {setView(transactionOrder)}
